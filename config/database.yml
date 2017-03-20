@@ -1,0 +1,12 @@
+
+# NOTE development, staging, and production all use same database on Jack's computer
+
+development:
+  adapter: postgresql
+  encoding: unicode
+  host: localhost
+  username: oe_user
+  password: oe_user
+  database: color
+  pool: 10
+  timeout: 5000
