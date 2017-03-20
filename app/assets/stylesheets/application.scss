@@ -14,7 +14,7 @@
  *= require_self
  */
 
-$block-background #aaa;
+$block-background: #0f0;
 
 body{
   background-color: black;
@@ -22,3 +22,12 @@ body{
 .block{
   background-color: $block-background;
 }
+.block-lighter{
+  background-color: lighten($block-background, 10%);
+}
+.block-darker{
+  background-color: darken($block-background, 10%);
+  background-color: red;
+  text-align: right;
+}
+
