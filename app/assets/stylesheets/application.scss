@@ -23,11 +23,9 @@ body{
   background-color: $block-background;
 }
 .block-lighter{
-  background-color: lighten($block-background, 10%);
+  background-color: lighten($block-background, 40%);
 }
 .block-darker{
-  background-color: darken($block-background, 10%);
-  background-color: red;
-  text-align: right;
+  background-color: darken($block-background, 50%);
 }
 
