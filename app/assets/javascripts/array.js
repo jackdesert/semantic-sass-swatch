@@ -1,8 +1,7 @@
 var buildColorArray = function(parentDiv){
 
   var div = function(color, klass){
-    console.log('div')
-    return "<div class='" + klass + "' style='background-color: " + color + "'></div>"
+    return $("<div class='" + klass + "' style='background-color: " + color + "'></div>")
   }
 
 //  var generateDivs = function(parentDiv, colorArray){
@@ -21,11 +20,14 @@ var buildColorArray = function(parentDiv){
     var $parentDiv = $(parentDiv)
     colorArray.map(function(color){
       var desaturates = generateDesaturates(color)
-      var lastDiv
-      $parentDiv.append(div('black', 'main-color'))
-      $lastDiv = $parentDiv.children().last()
+      var $mainColorDiv = div('black', 'main-color').appendTo($parentDiv)
       desaturates.map(function(desaturate){
-        $lastDiv.append(div(desaturate, 'desaturate colored-box'))
+        console.log(desaturate)
+        var shadesAndTints = generateShadesAndTints(desaturate)
+        var $shadesAndTintsDiv = div('black', 'shades-and-tints').appendTo($mainColorDiv)
+        shadesAndTints.map(function(shadeOrTint){
+          $shadesAndTintsDiv.append(div(shadeOrTint, 'colored-box'))
+        })
       })
     })
 
@@ -33,7 +35,7 @@ var buildColorArray = function(parentDiv){
 
 
   var generateColorArray = function(){
-    var bezInterpolator = chroma.bezier(['white', 'yellow', 'red', 'black'])
+    var bezInterpolator = chroma.bezier(['red', 'orange', 'yellow', 'green'])
     return bezInterpolator.scale().colors(4)
   }
 
@@ -47,12 +49,24 @@ var buildColorArray = function(parentDiv){
   }
 
   var generateTints = function(color){
-
+    var bezInterpolator = chroma.bezier([color, 'white'])
+    var colors = bezInterpolator.scale().colors(5)
+    colors.pop()
+    return colors.reverse()
   }
 
   var generateShades = function(color){
-
+    var bezInterpolator = chroma.bezier([color, 'black'])
+    colors = bezInterpolator.scale().colors(5)
+    colors.pop()
+    colors.shift()
+    return colors
   }
+
+  var generateShadesAndTints = function(color){
+    return generateTints(color).concat(generateShades(color))
+  }
+
 
 
 
