@@ -1,7 +1,13 @@
 var buildColorArray = function(parentDiv){
+  var sassDefinitions = ['# Sass Color Definitions', '']
 
-  var div = function(color, klass){
-    return $("<div class='" + klass + "' style='background-color: " + color + "'></div>")
+  var div = function(color, klass, colorDefinition){
+    var data = ''
+    if (colorDefinition === undefined){
+    }else{
+      data = " data-color-definition='" + colorDefinition + "'"
+    }
+    return $("<div class='" + klass + "'" + data + " style='background-color: " + color + "'></div>")
   }
 
 //  var generateDivs = function(parentDiv, colorArray){
@@ -16,17 +22,32 @@ var buildColorArray = function(parentDiv){
 //
 //  }
 
+  var writeColor = function(colorIndex, desaturateIndex, shadeOrTintIndex, color){
+    var line
+    var shadeOrTintValue = shadeOrTintIndex - 3
+    var shadeOrTintLabel = 'shad'
+    if (shadeOrTintValue < 0){
+      shadeOrTintValue = Math.abs(shadeOrTintValue)
+      shadeOrTintLabel = 'tint'
+    }
+
+    line = "$color-" + colorIndex + "-desat-" + desaturateIndex + "-" + shadeOrTintLabel + "-" + shadeOrTintValue + ": " + color + ";"
+    console.log(line)
+    sassDefinitions.push(line)
+    return line
+  }
+
   var generateGrid = function(parentDiv, colorArray){
     var $parentDiv = $(parentDiv)
-    colorArray.map(function(color){
+    colorArray.forEach(function(color, colorIndex){
       var desaturates = generateDesaturates(color)
       var $mainColorDiv = div('black', 'main-color').appendTo($parentDiv)
-      desaturates.map(function(desaturate){
-        console.log(desaturate)
+      desaturates.forEach(function(desaturate, desaturateIndex){
         var shadesAndTints = generateShadesAndTints(desaturate)
         var $shadesAndTintsDiv = div('black', 'shades-and-tints').appendTo($mainColorDiv)
-        shadesAndTints.map(function(shadeOrTint){
-          $shadesAndTintsDiv.append(div(shadeOrTint, 'colored-box'))
+        shadesAndTints.forEach(function(shadeOrTint, shadeOrTintIndex){
+          var definition = writeColor(colorIndex, desaturateIndex, shadeOrTintIndex, shadeOrTint)
+          $shadesAndTintsDiv.append(div(shadeOrTint, 'colored-box', definition))
         })
       })
     })
@@ -67,14 +88,29 @@ var buildColorArray = function(parentDiv){
     return generateTints(color).concat(generateShades(color))
   }
 
+  var bindColorDefinitions = function(){
+    $('div').on('click', function(event){
+      var colorDefinition = event.target.dataset.colorDefinition
+      $('.notice-box').text(colorDefinition)
+      console.log(colorDefinition)
+    })
+  }
+
+
+  var displaySassDefinitions = function(){
+    var content = sassDefinitions.join("\n<br>\n")
+    $('.sass-definitions').html(content)
+  }
 
 
 
   generateGrid(parentDiv, colorArray)
+  bindColorDefinitions()
+  displaySassDefinitions()
 
 
 }
 
 $(document).ready(function(){
-  buildColorArray('body')
+  buildColorArray('.colors-to-choose')
 })

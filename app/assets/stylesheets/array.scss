@@ -11,3 +11,18 @@
 .main-color{
   padding-bottom: 2rem;
 }
+
+.notice-box,
+.sass-definitions
+{
+  color: #777;
+  font-size: 1.5rem;
+  font-family: monospace;
+}
+
+.notice-box{
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+}
+
