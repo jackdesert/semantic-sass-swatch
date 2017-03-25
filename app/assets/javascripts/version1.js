@@ -110,7 +110,3 @@ var buildColorArray = function(parentDiv){
 
 
 }
-
-$(document).ready(function(){
-  buildColorArray('.colors-to-choose')
-})
