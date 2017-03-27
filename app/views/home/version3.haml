@@ -1,0 +1,21 @@
+%h1 Semantic Swatch Builder
+
+.notice-box
+  Click on a color to see its SASS definition
+
+.instructions
+  %p Semantically generated sass definitions for each of your base colors, plus desaturated, tinted, and shaded versions of the same.
+  %p Generated in CIEHCL (cylindrical version of LAB) color space
+  %p For example, "color-0-desat-3-tint-1" means "color 0 has been desaturated three steps and tinted one step"
+
+
+= text_field_tag :color_1, '#ff0000', id: :color_1
+= text_field_tag :color_2, '#ff9900', id: :color_2
+.colors-to-choose
+
+%pre.sass-definitions
+
+:javascript
+  $(document).ready(function(){
+    generateVersion3('.colors-to-choose')
+  })

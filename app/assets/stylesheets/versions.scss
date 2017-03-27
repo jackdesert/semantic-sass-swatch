@@ -1,0 +1,74 @@
+
+/* common */
+.notice-box,
+.sass-definitions
+{
+  color: #777;
+  font-size: 1.5rem;
+  font-family: monospace;
+}
+
+.notice-box{
+  position: fixed;
+  top: 0;
+  right: 0;
+  background-color: black;
+  padding: 1rem;
+  width: 100%;
+  text-align: right;
+}
+
+
+/* 1 and 2 */
+
+.shades-and-tints{
+  display: inline-block;
+}
+
+.main-color{
+  padding-bottom: 2rem;
+}
+
+.colored-box{
+  width: 3rem;
+  height: 3rem;
+  border: 1px solid #ccc;
+}
+
+
+/* 3 */
+
+h1{
+  margin-top: 4rem;
+  font-size: 3rem;
+}
+h1,
+.color-swatch__label,
+.instructions
+{
+  color: #ccc;
+}
+
+.instructions{
+  margin: 2rem 0;
+  max-width: 50rem;
+}
+
+.color-swatch{
+  margin-bottom: 5rem;
+}
+.color-swatch__tile{
+  width: 4rem;
+  height: 4rem;
+  border: 1px solid #ccc;
+}
+
+.color-swatch__tile:hover{
+  border-color: white;
+}
+
+.color-swatch__label{
+  text-align: center;
+}
+
+
