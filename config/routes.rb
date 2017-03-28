@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get '/version1' => 'home#version1'
   get '/version2' => 'home#version2'
   get '/version3' => 'home#version3'
+  get '/version4' => 'home#version4'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

@@ -1,0 +1,70 @@
+.content
+  .title__holder
+    .title__word semantic
+    .title__word-spacer
+      .title__word_vertical SASS
+    .title__word_horizontal watch
+    .title__hr
+
+  .notice-box.hidden
+
+
+  /.instructions
+  /  %p Semantically generated sass definitions for each of your base colors, plus desaturated, tinted, and shaded versions of the same.
+  /  %p Generated in CIEHCL (cylindrical version of LAB) color space
+  /  %p For example, "color-0-desat-3-tint-1" means "color 0 has been desaturated three steps and tinted one step"
+
+  - colors = ['#ff0000', 'ffaa00']
+  - colors.each_with_index do |color, index|
+    - id = "color_#{index}"
+    .swatch
+      .swatch__name-holder
+        .swatch__name= "color-#{index}"
+        = text_field_tag id, color, id: id, class: 'swatch__color-input'
+      .swatch__table-holder
+
+
+  #download-link-holder
+  / %pre.sass-definitions
+  .faq
+    %h2.faq__title Q & A
+    .faq__question Why CIEHCL?
+    .faq__answer Linearity
+
+    .faq__question Why the funky shapes?
+    .faq__answer
+
+      The more saturated a color, the less leeway you have to raise or lower its lightness
+      without also affecting either its chroma or hue.
+      Here is how the swatch is constructed.
+      %ol.faq__ol
+        %li.faq__li Start with the base color.
+        %li.faq__li
+          Create four levels of more and more grey.
+          That is, decreasing the chroma of the base
+          color while maintaining its lightness and hue. These are the four boxes to the right
+          of the base color. I call all five in the primary row "desaturates", even the the one
+          on the far left may indeed be saturated.
+        %li.faq__li
+          For each desaturate, attempt to create two additional tints
+          (lightness = 95, lightness = halfway from original to 95)
+          and two additional shades (lightness = 5, lightness = halfway from original to 5).
+          If said tint or shade exists in RGB color space, display a tile with that color.
+        %li.faq__li
+          Therefore it is quite common
+          for the color on the far left to be too saturated to be able to raise its lightness much and still
+          be in RGB color space.
+
+    .faq__question Why not use sass functions to desaturate, lighten, darken?
+    .faq__answer Because sass uses HSV
+
+
+    .faq__question Why provide so few shades, tints, and desaturates in a swatch?
+    .faq__answer
+      To guide you toward contrast with even intervals
+
+
+:javascript
+  $(document).ready(function(){
+    generateVersion4()
+  })

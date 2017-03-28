@@ -10,22 +10,15 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
  *= require_self
  */
 
 $block-background: #0f0;
 
+
+@import "reset.scss";
+@import "versions.scss";
+
 body{
   background-color: black;
 }
-.block{
-  background-color: $block-background;
-}
-.block-lighter{
-  background-color: lighten($block-background, 40%);
-}
-.block-darker{
-  background-color: darken($block-background, 50%);
-}
-
