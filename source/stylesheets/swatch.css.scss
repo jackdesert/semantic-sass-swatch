@@ -1,0 +1,29 @@
+// Swatch
+
+.swatch__name
+{
+  font-size: $label-font-size;
+}
+.swatch__name-holder
+{
+  width: 14.3rem;
+  min-height: 1px;
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 17rem;
+}
+
+.swatch__color-input
+{
+  width: 10rem;
+  font-size: 2rem;
+  height: $tile-dimension;
+  text-align: right;
+  padding-right: 0.5rem;
+}
+
+.swatch__table-holder
+{
+  display: inline-block;
+  margin-top: 10rem;
+}

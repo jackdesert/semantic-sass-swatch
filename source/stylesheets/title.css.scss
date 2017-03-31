@@ -1,0 +1,56 @@
+// Title
+
+.title__holder{
+  position: relative;
+  margin-top: 10rem;
+  margin-bottom: 3rem;
+  text-align: right;
+}
+
+.title__word
+{
+  font-size: 3.5rem;
+}
+
+.title__word,
+.title__word-spacer,
+.title__word_horizontal
+{
+  display: inline-block;
+  position: relative;
+}
+
+.title__word_vertical
+{
+  font-size: 5.5rem;
+  text-transform: uppercase;
+}
+
+.title__word_horizontal
+{
+  font-size: 5rem;
+  text-transform: uppercase;
+}
+
+
+.title__word-spacer{
+  width: 5rem;
+  height: 1px;
+}
+
+.title__word_vertical{
+  transform: rotate(270deg);
+  position: absolute;
+  bottom: 3.4rem;
+  right: -5.4rem;
+}
+
+.title__hr{
+  position: absolute;
+  height: 6rem;
+  width: 52.6rem;
+  border-bottom: 2rem solid #ccc;
+  border-left: 2rem solid #ccc;
+  margin-top: -4.9rem;
+}
+

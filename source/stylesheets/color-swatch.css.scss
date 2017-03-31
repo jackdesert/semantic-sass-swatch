@@ -1,0 +1,50 @@
+// color-swatch
+
+.color-swatch{
+}
+.color-swatch__tile{
+  width: $tile-dimension;
+  height: $tile-dimension;
+  border: 1px solid #ccc;
+}
+
+.color-swatch__tile:hover{
+  border-color: white;
+}
+
+.color-swatch__label{
+  text-align: center;
+}
+
+.color-swatch__label-holder
+{
+  position: relative;
+}
+
+.color-swatch__label_desat,
+.color-swatch__label_tint
+{
+  font-size: $label-font-size;
+  text-align: left;
+  color: #ccc;
+  width: 8rem;
+}
+
+.color-swatch__label_desat
+{
+  transform: rotate(270deg);
+  position: absolute;
+  bottom: 4rem;
+  left: -2.2rem;
+}
+
+.color-swatch__label_tint
+{
+  position: relative;
+  bottom: 1.2rem;
+}
+
+.color-swatch__label_tint
+{
+  padding-left: 0.9rem;
+}
