@@ -7,20 +7,39 @@ var validColor = function(color){
   }
 }
 
+var distanceGivenTwoArrays = function(a, b){
+  var sumOfSquares = 0
+  a.forEach(function(valueA, index){
+    var valueB = b[index]
+    var difference = valueA - valueB
+    sumOfSquares += Math.pow(difference, 2)
+  })
+  return Math.sqrt(sumOfSquares)
+}
+
 var lightnessFitsInRGB = function(color, proposedLightness){
-  // Given a color, can the lightness be changed to newLightness and the color
-  // still exist in RGB space?
+  // Instead of doing the actual conversion to see if it fits in RGB,
+  // we just check whether the color gets generated as we expect it.
+  //
+  // This works because chroma.js stores the color in RGB space. So if
+  // it doesn't keep the qualities we assigned in LCH space, it's because
+  // it didn't fit properly in RGB space
+  //
   var originalHCL = chroma(color).hcl()
 
   // Clone
-  var newHCL = [ originalHCL[0],
-                 originalHCL[1],
-                 proposedLightness ]
+  var proposedHCL = [ originalHCL[0],
+                      originalHCL[1],
+                      proposedLightness ]
 
-  var actualLightness = chroma.hcl(newHCL).hcl()[2]
-  var diffLightness = actualLightness - proposedLightness
+  var actualHCL = chroma.hcl(proposedHCL).hcl()
+  // Only use lightness and chroma chroma to determine distance, since
+  // hue (angle) may vary wildly for low-chroma colors suffering from 8-bit resolution
+  var distance = distanceGivenTwoArrays(proposedHCL.slice(1, 2), actualHCL.slice(1, 2))
 
-  return (Math.abs(diffLightness) < 1)
+  // We use a distance of 1 as our line in the sand, since if we choose the closest (R, G, B)
+  // we will be within a distance of 1 from the value we wanted, even with 8-bit RGB.
+  return (distance < 1)
 }
 
 var changeLightness = function(color, newLightness){
