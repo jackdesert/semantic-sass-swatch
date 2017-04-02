@@ -11,10 +11,14 @@ GEM
     autoprefixer-rails (6.7.7.1)
       execjs
     backports (3.7.0)
+    byebug (5.0.0)
+      columnize (= 0.9.0)
+    coderay (1.1.0)
     coffee-script (2.4.1)
       coffee-script-source
       execjs
     coffee-script-source (1.12.2)
+    columnize (0.9.0)
     compass-import-once (1.0.5)
       sass (>= 3.2, < 3.5)
     concurrent-ruby (1.0.5)
@@ -36,6 +40,7 @@ GEM
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
     memoist (0.15.0)
+    method_source (0.8.2)
     middleman (4.2.1)
       coffee-script (~> 2.2)
       compass-import-once (= 1.0.5)
@@ -72,10 +77,17 @@ GEM
       servolux
       tilt (~> 2.0)
       uglifier (~> 3.0)
+    middleman-deploy (2.0.0.pre.alpha)
+      middleman-core (>= 3.2)
+      net-sftp
+      ptools
     middleman-sprockets (4.1.0)
       middleman-core (~> 4.0)
       sprockets (>= 3.0)
     minitest (5.10.1)
+    net-sftp (2.1.2)
+      net-ssh (>= 2.6.5)
+    net-ssh (4.1.0)
     padrino-helpers (0.13.3.3)
       i18n (~> 0.6, >= 0.6.7)
       padrino-support (= 0.13.3.3)
@@ -83,6 +95,14 @@ GEM
     padrino-support (0.13.3.3)
       activesupport (>= 3.1)
     parallel (1.11.1)
+    pry (0.10.3)
+      coderay (~> 1.1.0)
+      method_source (~> 0.8.1)
+      slop (~> 3.4)
+    pry-byebug (3.2.0)
+      byebug (~> 5.0)
+      pry (~> 0.10)
+    ptools (1.3.3)
     public_suffix (2.0.5)
     rack (2.0.1)
     rb-fsevent (0.9.8)
@@ -90,6 +110,7 @@ GEM
       ffi (>= 0.5.0)
     sass (3.4.23)
     servolux (0.13.0)
+    slop (3.6.0)
     sprockets (3.7.1)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
@@ -98,7 +119,7 @@ GEM
     tilt (2.0.7)
     tzinfo (1.2.3)
       thread_safe (~> 0.1)
-    uglifier (3.1.11)
+    uglifier (3.1.12)
       execjs (>= 0.3.0, < 3)
 
 PLATFORMS
@@ -108,7 +129,9 @@ DEPENDENCIES
   haml
   middleman (~> 4.2)
   middleman-autoprefixer (~> 2.7)
+  middleman-deploy (~> 2.0.0.pre.alpha)
   middleman-sprockets
+  pry-byebug
   tzinfo-data
   wdm (~> 0.1)
 

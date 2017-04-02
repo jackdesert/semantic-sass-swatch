@@ -9,3 +9,5 @@
 
 # Ignore all logfiles and tempfiles.
 *swp
+
+/build
