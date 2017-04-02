@@ -14,9 +14,11 @@
   font-size: 0.8 * $label-font-size;
 }
 
+
 .faq__question{
-  margin-top: 1rem;
+  margin-top: 1.5rem;
 }
+
 
 .faq__question::before{
   content: 'Q: ';
@@ -26,10 +28,19 @@
   content: 'A: ';
 }
 
+.faq__answer{
+  padding-left: 2rem;
+  text-indent: -2rem;
+}
+
 .faq__ol,
 .faq__ul
 {
   padding-left: 2rem;
 }
 
+
+.faq__li{
+  text-indent: 0;
+}
 

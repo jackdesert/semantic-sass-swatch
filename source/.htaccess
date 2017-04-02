@@ -2,8 +2,7 @@
 # Source  https://simonecarletti.com/blog/2016/08/redirect-domain-http-https-www-apache/
 
 RewriteEngine On
-RewriteCond %{HTTPS} off [OR]
 RewriteCond %{HTTP_HOST} ^www\. [NC]
 RewriteCond %{HTTP_HOST} ^(?:www\.)?(.+)$ [NC]
-RewriteRule ^ https://%1%{REQUEST_URI} [L,NE,R=301]
+RewriteRule ^ http://%1%{REQUEST_URI} [L,NE,R=301]
 

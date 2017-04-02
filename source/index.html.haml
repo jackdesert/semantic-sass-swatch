@@ -9,11 +9,6 @@
   .notice-box.hidden
 
 
-  /.instructions
-  /  %p Semantically generated sass definitions for each of your base colors, plus desaturated, tinted, and shaded versions of the same.
-  /  %p Generated in CIEHCL (cylindrical version of LAB) color space
-  /  %p For example, "color-0-desat-3-tint-1" means "color 0 has been desaturated three steps and tinted one step"
-
   - colors = ['#ff0000', 'ffaa00']
   - colors.each_with_index do |color, index|
     - id = "color_#{index}"
@@ -28,41 +23,77 @@
   / %pre.sass-definitions
   .faq
     %h2.faq__title Q & A
-    .faq__question Why CIEHCL?
-    .faq__answer Linearity
+
+    .faq__question It's space invaders, right?
+    .faq__answer So close!
+
+    .faq__question No really&mdash;what the fuck?
+    .faq__answer
+      Tell us what your actual colors are. (Your brand color, a couple of secondary colors, and a highlight color). In return, you get SASS definitions for:
+      %ul.faq__ul
+        %li.faq__li The original (leftmost colored tile)
+        %li.faq__li Four desaturates for the original (moving to the right towards grey)
+        %li.faq__li Up to two tints for each desaturate (moving up towards white)
+        %li.faq__li Up to two shades for each desaturate (moving down towards black)
+
+    .faq__question What is special about this swatch?
+    .faq__answer It is generated in LCH (a polar representation of LAB) space, which means that when you desaturate, it decreases Chroma while maintaining the same level of Lightness and Hue. And when you tint or shade, it adjusts Lightness while maintaining the save level of Chroma and. And if the tint or shade it is aiming for is out of RGB gamut, rather than behaving badly it simply doesn't make the swatch.
+
+    .faq__question Why do I want this?
+    .faq__answer Helps you to easily reference colors based on your originals. Aims toward contrast, following the rule of "be consistent, until you're ready to be different enough to be noticed."
 
     .faq__question Why the funky shapes?
     .faq__answer
-
-      The more saturated a color, the less leeway you have to raise or lower its lightness
-      without also affecting either its chroma or hue.
-      Here is how the swatch is constructed.
+      The more saturated a color, the less leeway you have to raise or lower its Lightness
+      without also affecting either its Chroma or Hue.
+      Here is how the swatch is constructed:
       %ol.faq__ol
         %li.faq__li Start with the base color.
         %li.faq__li
           Create four levels of more and more grey.
-          That is, decreasing the chroma of the base
+          That is, decrease the chroma of the base
           color while maintaining its lightness and hue. These are the four boxes to the right
           of the base color. I call all five in the primary row "desaturates", even the the one
-          on the far left may indeed be saturated.
+          on the far left may indeed be (fully) saturated.
         %li.faq__li
           For each desaturate, attempt to create two additional tints
-          (lightness = 95, lightness = halfway from original to 95)
-          and two additional shades (lightness = 5, lightness = halfway from original to 5).
+          (lightness = 95, lightness = halfway between original and 95)
+          and two additional shades (lightness = 5, lightness = halfway between original and 5).
           If said tint or shade exists in RGB color space, display a tile with that color.
         %li.faq__li
           Therefore it is quite common
           for the color on the far left to be too saturated to be able to raise its lightness much and still
           be in RGB color space.
 
-    .faq__question Why not use sass functions to desaturate, lighten, darken?
-    .faq__answer Because sass uses HSV
+    .faq__question Why not use the built-in SASS functions to desaturate, lighten, darken?
+    .faq__answer
+      Because sass uses HSV. See this article about
+      = link_to "what's wrong with HSV", 'https://www.vis4.net/blog/posts/avoid-equidistant-hsv-colors/', class: 'link'
+    .faq__answer With the built-in SASS functions, it is not intuitive how much to lighten, darken, or desaturate to create the desired effect.
+
 
 
     .faq__question Why provide so few shades, tints, and desaturates in a swatch?
     .faq__answer
-      To guide you toward contrast with even intervals
+      Contrast is found in having few gradations, evenly spaced.
 
+    .faq__question How do I see the RGB and LCH values for one of the tiles in the swatch?
+    .faq__answer Hover over it with your mouse, and the definition appears at the top of the page in grey.
+
+    .faq__question Where are the SASS definitions?
+    .faq__answer Click the download link called "Generate SASS File"
+
+    .faq__question What about Saskwatch?
+    .faq__answer Err..
+
+  .footer
+    .footer__element
+      Source Code:
+      = link_to 'Github', '//github.com/jackdesert/semantic-sass-swatch', class: 'link', target: :_blank
+    .footer__element
+      Contact:
+      - email = 'jackdesert@gmail.com'
+      = link_to email, "mailto:#{email}?subject=Semantic%20SASS%20Swatch", class: 'link'
 
 :javascript
   $(document).ready(function(){

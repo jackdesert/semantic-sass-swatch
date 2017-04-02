@@ -110,7 +110,7 @@ var generateSwatches = function(){
 
   var generateDownloadLink = function(){
     // Source: http://stackoverflow.com/questions/31656782/create-big-downloable-file-from-string-variable-in-html-javascript
-    var linkKlass = 'download-link'
+    var linkKlass = 'link link_download'
     var createObjectURL = (window.URL || window.webkitURL || {}).createObjectURL || function(){}
     var blob = null
     var content = sassDefinitions.join("\n")
@@ -154,7 +154,7 @@ var generateSwatches = function(){
     var L = lch[0].toPrecision(3)
     var C = lch[1].toPrecision(3)
     var H = lch[2].toPrecision(3)
-    var lchString = 'H: ' + H + '  C: ' + C + '  L: ' + L
+    var lchString = 'L: ' + L + '  C: ' + C + '  H: ' + H
 
     var line
     var shadeOrTintValue = shadeOrTintIndex - 2
