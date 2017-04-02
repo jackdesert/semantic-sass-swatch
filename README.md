@@ -1,14 +1,14 @@
 Semantic SASS Swatches
 ======================
 
-http://semantic-sass-swatches.com
+http://semantic-sass-swatch.com
 
 
 Develop
 -----------
 
-    git clone git@github.com:jackdesert/semantic-sass-swatches
-    cd semantic-sass-swatches
+    git clone git@github.com:jackdesert/semantic-sass-swatch
+    cd semantic-sass-swatch
     bundle
     bundle exec middleman server
 
@@ -16,6 +16,7 @@ Develop
 Deploy
 ------
 
+    bundle exec middleman build && bundle exec middleman deploy
 
 
 
