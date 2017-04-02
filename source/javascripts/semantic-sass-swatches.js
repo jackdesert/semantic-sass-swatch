@@ -185,16 +185,18 @@ var generateSwatches = function(){
   }
 
   var bindColorDefinitions = function(){
-    var $tile = $('.color-swatch__tile')
-    var $noticeBox = $('.notice-box')
 
-    $tile.on('mouseover', function(event){
+    var $noticeBox = $('.notice-box')
+    var $table = $('.swatch__table-holder')
+    var tile = '.color-swatch__tile'
+
+    $table.on('mouseover', tile, function(event){
       var colorDefinition = event.target.dataset.colorDefinition
       $noticeBox.show()
       $noticeBox.text(colorDefinition)
     })
 
-    $tile.on('mouseout', function(event){
+    $table.on('mouseout', tile, function(event){
       $noticeBox.hide()
     })
 
