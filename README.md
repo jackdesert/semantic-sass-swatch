@@ -1,5 +1,5 @@
-Semantic SASS Swatches
-======================
+Semantic SASS Swatch
+====================
 
 http://semantic-sass-swatch.com
 

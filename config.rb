@@ -73,7 +73,7 @@ end
 # Ignoring all included javascript files
 ignore 'javascripts/chroma.js'
 ignore 'javascripts/jquery-3.2.0.js'
-ignore 'javascripts/semantic-sass-swatches.js'
+ignore 'javascripts/semantic-sass-swatch.js'
 
 # For some reason middleman does not ignore stylesheets when specifically instructed to do so
 # Therefore reverting to underscores at beginning of stylesheets that should not be built
