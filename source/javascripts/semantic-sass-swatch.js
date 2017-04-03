@@ -110,11 +110,16 @@ var generateSwatches = function(){
 
   var generateDownloadLink = function(){
     // Source: http://stackoverflow.com/questions/31656782/create-big-downloable-file-from-string-variable-in-html-javascript
-    var linkKlass = 'link link_download'
+    var linkKlass = 'link_download'
     var createObjectURL = (window.URL || window.webkitURL || {}).createObjectURL || function(){}
     var blob = null
-    var content = sassDefinitions.join("\n")
+    var content
     var mimeString = "application/octet-stream"
+    var joiner = "\n"
+    if (navigator.platform == 'Win32'){
+      joiner = "\r\n"
+    }
+    content = sassDefinitions.join(joiner)
     window.BlobBuilder = window.BlobBuilder ||
                          window.WebKitBlobBuilder ||
                          window.MozBlobBuilder ||

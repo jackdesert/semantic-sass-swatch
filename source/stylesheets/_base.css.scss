@@ -66,6 +66,12 @@ div{
 }
 
 .link_download{
+  display: inline-block;
   font-size: $label-font-size;
+  background-color: white;
+  border: 2px solid green;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin: 2rem 0;
 }
 

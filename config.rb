@@ -80,6 +80,7 @@ ignore 'javascripts/semantic-sass-swatch.js'
 
 # Ignore swapfiles
 ignore 'stylesheets/*.swp'
+ignore 'javascripts/*.swp'
 
 
 

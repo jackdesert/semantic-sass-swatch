@@ -40,7 +40,10 @@
     .faq__answer It is generated in LCH (a polar representation of LAB) space, which means that when you desaturate, it decreases Chroma while maintaining the same level of Lightness and Hue. And when you tint or shade, it adjusts Lightness while maintaining the save level of Chroma and. And if the tint or shade it is aiming for is out of RGB gamut, rather than behaving badly it simply doesn't make the swatch.
 
     .faq__question Why do I want this?
-    .faq__answer Helps you to easily reference colors based on your originals. Aims toward contrast, following the rule of "be consistent, until you're ready to be different enough to be noticed."
+    .faq__answer Shows you at a glance how the colors in your swatch were derived&mdash;what original they are from, how much desaturation, how much tint/shade.
+    .faq__answer Aims toward contrast, following the rule of "be consistent, until you're ready to be different enough to be noticed."
+    .faq__answer Allows you to see your same design using different base (original) colors with little change in CSS.
+
 
     .faq__question Why the funky shapes?
     .faq__answer
@@ -68,7 +71,7 @@
     .faq__question Why not use the built-in SASS functions to desaturate, lighten, darken?
     .faq__answer
       Because sass uses HSV. See this article about
-      = link_to "what's wrong with HSV", 'https://www.vis4.net/blog/posts/avoid-equidistant-hsv-colors/', class: 'link'
+      = link_to "what's wrong with HSV", 'https://www.vis4.net/blog/posts/avoid-equidistant-hsv-colors/', class: :link, target: :blank
     .faq__answer With the built-in SASS functions, it is not intuitive how much to lighten, darken, or desaturate to create the desired effect.
 
 
@@ -80,20 +83,25 @@
     .faq__question How do I see the RGB and LCH values for one of the tiles in the swatch?
     .faq__answer Hover over it with your mouse, and the definition appears at the top of the page in grey.
 
+    .faq__question What is SASS?
+    .faq__answer
+      Syntactically Awesome Style Sheets. Here's the
+      = link_to 'wikipedia page', '//en.wikipedia.org/wiki/Sass_(stylesheet_language)', class: :link, target: :blank
+
     .faq__question Where are the SASS definitions?
     .faq__answer Click the download link called "Generate SASS File"
 
-    .faq__question What about Saskwatch?
+    .faq__question What about Sasquatch?
     .faq__answer Err..
 
   .footer
     .footer__element
       Source Code:
-      = link_to 'Github', '//github.com/jackdesert/semantic-sass-swatch', class: 'link', target: :_blank
+      = link_to 'Github', '//github.com/jackdesert/semantic-sass-swatch', class: :link, target: :_blank
     .footer__element
       Contact:
       - email = 'jackdesert@gmail.com'
-      = link_to email, "mailto:#{email}?subject=Semantic%20SASS%20Swatch", class: 'link'
+      = link_to email, "mailto:#{email}?subject=Semantic%20SASS%20Swatch", class: :link
 
 :javascript
   $(document).ready(function(){
