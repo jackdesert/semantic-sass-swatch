@@ -141,12 +141,13 @@ var generateSwatches = function(){
     var url = createObjectURL(blob)
     var a = document.createElement("a")
     a.href = url
-    a.download = "semantic-sass-swatch.com.scss"
-    a.innerHTML = "Generate SASS File"
+    a.download = "semantic-sass-swatch.css.scss"
+    a.innerHTML = "Download SASS Swatch"
 
     // Remove existing download links from page
     $('.' + linkKlass).remove()
     $(a).addClass(linkKlass)
+    $(a).addClass('button')
     $('#download-link-holder').append(a)
   }
 
