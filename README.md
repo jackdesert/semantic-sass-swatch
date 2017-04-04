@@ -23,6 +23,7 @@ Feature Requests (not on the backlog)
 -------------------------------------
 
 * When an english color name is entered, show the hex code for it so they can nudge
+* Support more color names. Lemon, burgundy
 
 
 
@@ -30,8 +31,6 @@ Backlog
 -------
 
 * Improve space invaders joke
-* CRLF if windows; else LF is fine
-* Make sure download link is removed before each addition
 * Eat our own dogfood
 * Rearrange Q&A so that Q/A is a different color/saturation/shade
   instead of having the "Q" and "A", because the "Q" and "A" look
@@ -61,4 +60,5 @@ Done
 * converted from rails to middleman
 * deploy (statically, please)
 * register semantic-sass-swatch.com
+* CRLF if windows; else LF is fine
 

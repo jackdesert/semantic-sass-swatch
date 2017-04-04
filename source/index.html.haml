@@ -9,23 +9,25 @@
   .notice-box.hidden
 
 
-  - colors = ['#ff0000', 'ffaa00']
-  - colors.each_with_index do |color, index|
-    - id = "color_#{index}"
-    .swatch
-      .swatch__name-holder
-        .swatch__name= "color-#{index}"
-        %input.swatch__color-input{type: :text, id: id, name: id, value: color}
-      .swatch__table-holder
+  #swatches
+    - colors = ['#ff0000', 'ffaa00']
+    - colors.each_with_index do |color, index|
+      - id = "color_#{index}"
+      .swatch
+        .swatch__name-holder
+          .swatch__name= "color-#{index}"
+          %input.swatch__color-input{type: :text, id: id, name: id, value: color}
+        .swatch__table-holder
 
 
+  .button#one-more-color Add Another Swatch
   #download-link-holder
   / %pre.sass-definitions
   .faq
     %h2.faq__title Q & A
 
-    .faq__question It's space invaders, right?
-    .faq__answer So close!
+    .faq__question Those conglomerations of square shapes remind me of Space Invaders. Is this a game?
+    .faq__answer I hope you find this page as addictive and educational as the best games!
 
     .faq__question No really&mdash;what the fuck?
     .faq__answer

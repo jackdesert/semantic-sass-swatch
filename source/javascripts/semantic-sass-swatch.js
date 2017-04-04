@@ -1,3 +1,9 @@
+
+var renderTdElementsTransparent = function($parentElement){
+  $parentElement.find('td').css('background-color', 'transparent')
+}
+
+
 var validColor = function(color){
   try{
     chroma(color)
@@ -101,7 +107,6 @@ var verticalSlice = function(color){
 
 var generateSwatches = function(){
 
-  var $colorInputs = $('.swatch__color-input')
   var sassDefinitionsOriginal = ['// Generated using http://semantic-sass-swatch.com',
                                  '//',
                                  '// SASS Variable         RGB Value    // CIELCh Values',
@@ -213,6 +218,29 @@ var generateSwatches = function(){
     $('.sass-definitions').html(content)
   }
 
+  var bindOneMoreColor = function(){
+    var effectDuration = 250
+
+    var oneMoreColor = function(){
+      var numSwatches = $('.swatch').length
+      var $swatchName, name, nameArray, id
+      var $lastSwatch = $('.swatch').last()
+      var html = "<div class='swatch'>" + $lastSwatch.html() + "</div>"
+      var $newSwatch = $(html).insertAfter($lastSwatch)
+      renderTdElementsTransparent($newSwatch)
+      $newSwatch.hide()
+      $newSwatch.slideDown(effectDuration, 'linear')
+      $newSwatch.find('.swatch__color-input').val('')
+      $newSwatch.find('.swatch__name').text('color-' + numSwatches)
+
+
+    }
+
+    $('#one-more-color').on('click', function(){
+      oneMoreColor()
+    })
+  }
+
   var generateTableForColor = function(color, colorIndex){
     var tintArray = ['tint-2', 'tint-1', 'tint-0', 'shad-1', 'shad-2']
     var hexColor
@@ -267,8 +295,7 @@ var generateSwatches = function(){
 
   var runEachColor = function(){
     resetSassDefinitions()
-
-
+    var $colorInputs = $('.swatch__color-input')
 
     $colorInputs.each(function(colorIndex){
       var $parentDiv = $(this).parents('.swatch')
@@ -278,19 +305,22 @@ var generateSwatches = function(){
         tableHtml = generateTableForColor(color, colorIndex)
         $parentDiv.find('.swatch__table-holder').html(tableHtml)
       }else{
-        $parentDiv.find('td').css('background-color', 'transparent')
+        renderTdElementsTransparent($parentDiv)
       }
     })
 
     generateDownloadLink()
   }
 
-  $colorInputs.on('input', function(){
+  $('#swatches').on('input', '.swatch__color-input', function(){
+    console.log('running!')
     runEachColor()
   })
 
   runEachColor()
 
   bindColorDefinitions()
+
+  bindOneMoreColor()
 
 }
