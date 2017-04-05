@@ -198,16 +198,16 @@ var generateSwatches = function(){
   var bindColorDefinitions = function(){
 
     var $noticeBox = $('.notice-box')
-    var $table = $('.swatch__table-holder')
+    var $swatches = $('#swatches')
     var tile = '.color-swatch__tile'
 
-    $table.on('mouseover', tile, function(event){
+    $swatches.on('mouseover', tile, function(event){
       var colorDefinition = event.target.dataset.colorDefinition
       $noticeBox.show()
       $noticeBox.text(colorDefinition)
     })
 
-    $table.on('mouseout', tile, function(event){
+    $swatches.on('mouseout', tile, function(event){
       $noticeBox.hide()
     })
 
